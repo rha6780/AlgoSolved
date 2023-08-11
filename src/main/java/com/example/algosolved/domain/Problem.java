@@ -13,14 +13,15 @@ public class Problem {
     @Column(name="title", nullable = false, length = 512)
     private String title;
 
-    private String solve;
+    private String content;
+
 
     public Problem() {}
 
-    public Problem(String title, String solve) {
+    public Problem(String title, String content) {
         super();
         this.title = title;
-        this.solve = solve;
+        this.content = content;
     }
 
     public long getId() {
@@ -35,12 +36,12 @@ public class Problem {
         this.title = title;
     }
 
-    public String getSolve() {
-        return solve;
+    public String getContent() {
+        return content;
     }
 
-    public void setSolve(String solve) {
-        this.solve = solve;
+    public void setContent(String content) {
+        this.content = content;
     }
 }
 
