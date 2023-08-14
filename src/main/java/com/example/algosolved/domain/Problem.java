@@ -47,6 +47,10 @@ public class Problem {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public Collection<Solve> getSoleves() {
+        return solves;
+    }
 }
 
 

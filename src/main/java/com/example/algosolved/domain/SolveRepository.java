@@ -4,6 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ProblemRepository extends CrudRepository<Problem, Long> {
-    List<Problem> findById(long id);
+public interface SolveRepository extends CrudRepository<Solve, Long> {
+    List<Solve> findById(long id);
+
+
 }

@@ -11,8 +11,8 @@ public class ProblemController {
     @Autowired
     private ProblemRepository repository;
 
-//    @RequestMapping(value="/problems")
-//    public Iterable<Problem> listProblem() {
-//        return repository.findByList();
-//    }
+    @RequestMapping(value="/problems")
+    public Iterable<Problem> getProblems() {
+        return repository.findAll();
+    }
 }
