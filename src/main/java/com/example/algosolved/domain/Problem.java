@@ -1,6 +1,7 @@
 package com.example.algosolved.domain;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(name="Problem")
@@ -15,6 +16,9 @@ public class Problem {
 
     private String content;
 
+    @OneToMany
+    @JoinColumn(name="problem_id")
+    private Collection<Solve> solves;
 
     public Problem() {}
 
