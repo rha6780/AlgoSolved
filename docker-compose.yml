@@ -10,3 +10,11 @@ services:
       - 5433:5432
     restart: always
 
+  api:
+    build:
+      context: .
+    ports:
+      - 8081:8080
+    restart: always
+    depends_on:
+      - db
