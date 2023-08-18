@@ -1,8 +1,7 @@
-package com.example.algosolved.domain;
+package com.example.algosolved.model;
 
 
 import javax.persistence.*;
-import java.util.*;
 
 @Entity
 public class Solve {
