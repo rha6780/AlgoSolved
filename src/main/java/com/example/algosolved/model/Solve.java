@@ -4,6 +4,7 @@ package com.example.algosolved.model;
 import javax.persistence.*;
 
 @Entity
+@Table
 public class Solve {
     @Id
     @Column(name="id")

@@ -7,14 +7,35 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - 5433:5432
+      - "5433:5432"
+    expose:
+      - "5433"
+      - "5432"
     restart: always
+    networks:
+      algosolved_networks:
 
   api:
     build:
       context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/algosolve
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+#      SPRING_PROFILES_ACTIVE: dev
     ports:
-      - 8081:8080
+      - "8080:8080"
     restart: always
     depends_on:
       - db
+    networks:
+      algosolved_networks:
+
+
+networks:
+  algosolved_networks:
+    driver: bridge
