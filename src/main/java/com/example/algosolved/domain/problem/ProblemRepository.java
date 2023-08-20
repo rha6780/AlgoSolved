@@ -1,6 +1,6 @@
-package com.example.algosolved.repository;
+package com.example.algosolved.domain.problem;
 
-import com.example.algosolved.model.Problem;
+import com.example.algosolved.domain.problem.Problem;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -1,4 +1,6 @@
-package com.example.algosolved.model;
+package com.example.algosolved.domain.problem;
+
+import com.example.algosolved.domain.solve.Solve;
 
 import javax.persistence.*;
 import java.util.*;

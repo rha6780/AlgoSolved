@@ -1,7 +1,7 @@
 package com.example.algosolved;
 
-import com.example.algosolved.repository.ProblemRepository;
-import com.example.algosolved.repository.SolveRepository;
+import com.example.algosolved.domain.problem.ProblemRepository;
+import com.example.algosolved.domain.solve.SolveRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

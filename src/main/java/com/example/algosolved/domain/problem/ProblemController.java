@@ -1,6 +1,6 @@
-package com.example.algosolved.web;
+package com.example.algosolved.domain.problem;
 
-import com.example.algosolved.repository.ProblemRepository;
+import com.example.algosolved.domain.problem.ProblemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
