@@ -20,7 +20,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - algosolved-volume:/usr/src/app
+      - .:/usr/src/app
     working_dir: /usr/src/app
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/algosolve
@@ -35,8 +35,6 @@ services:
     networks:
       algosolved_networks:
 
-volumes:
-  algosolved-volume:
 
 networks:
   algosolved_networks:
