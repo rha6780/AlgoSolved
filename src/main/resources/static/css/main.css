@@ -3,3 +3,21 @@
     padding-top: 100px;
     color: red;
 }
+
+.title {
+    font-size: 20px;
+}
+
+.search {
+    position: relative;
+    padding: 10px;
+    width: 600px;
+}
+
+.search input {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+}
