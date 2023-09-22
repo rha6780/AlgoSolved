@@ -13,6 +13,8 @@ public class Problem {
     @GeneratedValue
     private long id;
 
+    private long number;
+
     @Column(name="title", nullable = false, length = 512)
     private String title;
 
@@ -33,6 +35,10 @@ public class Problem {
     public long getId() {
         return id;
     }
+
+    public long getNumber() {return number;}
+
+    public void setNumber(long number) { this.number = number; }
 
     public String getTitle() {
         return title;

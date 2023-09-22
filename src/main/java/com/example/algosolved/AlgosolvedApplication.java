@@ -24,5 +24,4 @@ public class AlgosolvedApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AlgosolvedApplication.class, args);
 	}
-
 }
