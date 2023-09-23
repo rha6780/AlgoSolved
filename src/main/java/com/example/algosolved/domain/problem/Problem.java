@@ -1,11 +1,16 @@
 package com.example.algosolved.domain.problem;
 
 import com.example.algosolved.domain.solve.Solve;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.Collection;
 
 @Entity
+@Getter
+@Setter
 @Table(name="Problem")
 public class Problem {
     @Id
@@ -26,10 +31,12 @@ public class Problem {
 
     public Problem() {}
 
-    public Problem(String title, String content) {
+    @Builder
+    public Problem(String title, String content, long number) {
         super();
         this.title = title;
         this.content = content;
+        this.number = number;
     }
 
     public long getId() {
