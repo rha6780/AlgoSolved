@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProblemController {
+
     @Autowired
-    private ProblemRepository repository;
+    public ProblemRepository repository;
 
     @Operation(summary = "get problem", description = "문제 정보 가져오기")
     @ApiResponses({
@@ -26,8 +27,8 @@ public class ProblemController {
             @Parameter(name = "id", description = "문제 id", example = "1"),
     })
     @GetMapping("/api/v1/problem")
-    public Iterable<Problem> getProblem(@RequestParam("id") long id) {
-        return repository.findById(id);
+    public Iterable<Problem> getProblem(@RequestParam("number") long number) {
+        return repository.findByNumber(number);
     }
 
     @GetMapping("/api/v1/problems")

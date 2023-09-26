@@ -15,7 +15,7 @@ import java.util.Collection;
 public class Problem {
     @Id
     @Column(name="id")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private long number;
@@ -28,8 +28,6 @@ public class Problem {
     @OneToMany
     @JoinColumn(name="problem_id")
     private Collection<Solve> solves;
-
-    public Problem() {}
 
     @Builder
     public Problem(String title, String content, long number) {

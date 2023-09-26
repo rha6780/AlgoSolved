@@ -23,8 +23,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation group: 'org.javassist', name: 'javassist', version: '3.15.0-GA'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
+
 	implementation 'org.postgresql:postgresql:42.5.0'
     implementation 'junit:junit:4.13.1'
+
+	//테스트용
+	implementation 'com.h2database:h2'
+	implementation('org.hibernate.validator:hibernate-validator:6.1.2.Final')
+	implementation('org.glassfish:jakarta.el:3.0.3')
 
     compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
