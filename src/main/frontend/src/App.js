@@ -6,6 +6,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <input type="text" placeholder="검색어 입력 (ex: 백준 1000)"/>
+        <button>검색</button>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
