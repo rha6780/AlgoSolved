@@ -1,5 +1,6 @@
 package com.example.algosolved.domain.problem;
 
+import com.example.algosolved.common.dto.RestResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/problem")
@@ -37,10 +38,18 @@ public class ProblemController {
     @Parameters({
             @Parameter(name = "id", description = "문제 id", example = "1"),
     })
-    @GetMapping("/{num}")
-    public ResponseEntity<List<Problem>> getProblem(@PathVariable Long num) {
-        List<Problem> res = problemService.getProblemByNumber(num);
-        return ResponseEntity.status(HttpStatus.OK).body(res);
+    @GetMapping("/{id}")
+    public ResponseEntity<RestResponse> getProblem(@PathVariable Long id) {
+        RestResponse<Object> restResponse = new RestResponse<>();
+        Optional<Problem> problem = problemService.getProblemById(id);
+        restResponse = RestResponse.builder()
+                .code(HttpStatus.OK.value())
+                .httpStatus(HttpStatus.OK)
+                .message("")
+                .data(problem)
+                .build();
+
+        return ResponseEntity.status(HttpStatus.OK).body(restResponse);
     }
 
 //    @PostMapping("")

@@ -29,6 +29,8 @@ public class Problem {
     @JoinColumn(name="problem_id")
     private Collection<Solve> solves;
 
+    public Problem(){}
+
     @Builder
     public Problem(String title, String content, long number) {
         super();

@@ -1,9 +1,9 @@
 package com.example.algosolved.domain.problem;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import java.util.Optional;
 
-public interface ProblemRepository extends CrudRepository<Problem, Long> {
-    List<Problem> findByNumber(long number);
+public interface ProblemRepository extends JpaRepository<Problem, Long> {
+    Optional<Problem> findByNumber(long number);
 }
