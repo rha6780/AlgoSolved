@@ -11,3 +11,5 @@
 
 Spring boot 풀스택으로 개발(자세한 내용은 build.gradle 확인), DB 는 Postgresql - Docker compose 를 이용한다.
 
+frontend 는 React로 npm start로 실행
+
