@@ -1,6 +1,7 @@
 package com.example.algosolved.domain.problem;
 
 import com.example.algosolved.common.dto.RestResponse;
+import com.example.algosolved.domain.problem.dto.CreateProblemRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -9,11 +10,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -52,11 +51,19 @@ public class ProblemController {
         return ResponseEntity.status(HttpStatus.OK).body(restResponse);
     }
 
-//    @PostMapping("")
-//    public ResponseEntity<Problem> newProblem(@RequestBody Problem) {
-//        Problem problem = new Problem("title", "content", 1);
-//        return ResponseEntity.status(HttpStatus.OK).body(problem);
-//    }
+    @PostMapping("")
+    public ResponseEntity<RestResponse> newProblem(@RequestBody @Valid CreateProblemRequest request) {
+
+        Problem problem = new Problem(request.getTitle(), request.getContent(), request.getNumber());
+        RestResponse<Object> restResponse = new RestResponse<>();
+        restResponse = RestResponse.builder()
+                .code(HttpStatus.OK.value())
+                .httpStatus(HttpStatus.OK)
+                .message("")
+                .data(problem)
+                .build();
+        return ResponseEntity.status(HttpStatus.OK).body(restResponse);
+    }
 
 //    @GetMapping("/api/v1/problems")
 //    public Iterable<Problem> getProblems() {
