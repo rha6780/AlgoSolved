@@ -16,9 +16,9 @@ public class Problem {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    private long number;
+    private Long number;
 
     @Column(name="title", nullable = false, length = 512)
     private String title;

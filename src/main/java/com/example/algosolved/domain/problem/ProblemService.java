@@ -3,6 +3,8 @@ package com.example.algosolved.domain.problem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProblemService {
     private final ProblemRepository problemRepository;
@@ -16,5 +18,9 @@ public class ProblemService {
     public Long newProblem(Problem problem) {
         problemRepository.save(problem);
         return problem.getId();
+    }
+
+    public List<Problem> getProblemByNumber(Long number) {
+        return problemRepository.findByNumber(number);
     }
 }
