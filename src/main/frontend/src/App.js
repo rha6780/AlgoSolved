@@ -2,11 +2,19 @@ import React, { useState } from 'react';
 import './App.css';
 import { styled, alpha } from '@mui/material/styles';
 import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
+
+//import MenuItem from '@mui/material/MenuItem';
+//import Menu from '@mui/material/Menu';
+//import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -43,7 +51,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
+      width: '30ch',
     },
   },
 }));
@@ -56,7 +64,7 @@ function App() {
                 <Typography variant="h5">
                     Algo Solved
                 </Typography>
-
+                <Box sx={{ flexGrow: 1 }} />
                 <Search>
                     <SearchIconWrapper>
                         <SearchIcon />
@@ -66,6 +74,19 @@ function App() {
                         inputProps={{ 'aria-label': 'search' }}
                     />
                 </Search>
+                <Box sx={{ display: { xs: 'none', md: 'flex'} }}>
+                <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+//                  aria-controls={menuId}
+                  aria-haspopup="true"
+//                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                </Box>
             </Toolbar>
         </AppBar>
     </Container>
