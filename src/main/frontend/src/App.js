@@ -14,6 +14,7 @@ import SearchIcon from '@mui/icons-material/Search';
 //import Menu from '@mui/material/Menu';
 //import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import Banner from './home/Banner.js';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -58,6 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function App() {
   return (
+  <div>
     <Container>
         <AppBar position="static">
             <Toolbar>
@@ -90,6 +92,9 @@ function App() {
             </Toolbar>
         </AppBar>
     </Container>
+    <br/>
+    <Banner />
+    </div>
   );
 }
 
