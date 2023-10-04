@@ -63,9 +63,11 @@ function NavBar() {
     <Container>
         <AppBar position="static">
             <Toolbar>
-                <Typography variant="h5">
+            <Link to={'/'} styled="none">
+                <Typography variant="h5" styled="none">
                     Algo Solved
                 </Typography>
+                </Link>
                 <Box sx={{ flexGrow: 1 }} />
                 <Search>
                     <SearchIconWrapper>
@@ -96,7 +98,6 @@ function NavBar() {
                       variant="contained"
                       aria-label="Disabled elevation buttons"
                     >
-                      <Link to={'/signup'}><Button>SignUp</Button></Link>
                       <Link to={'/login'}><Button>Login</Button></Link>
                     </ButtonGroup>
 

@@ -15,15 +15,24 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import Banner from 'components/home/Banner.js';
 import Recommend from 'components/home/Recommend.js';
 import NavBar from 'components/common/NavBar.js';
+import Footer from 'components/common/Footer';
 
 
 function Home() {
   return (
-    <Container>
+  <div>
+    <Container sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+    }}>
         <NavBar />
         <Banner />
         <Recommend />
+
     </Container>
+    <Footer />
+    </ div>
    );
 }
 
