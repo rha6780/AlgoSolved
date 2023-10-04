@@ -1,7 +1,10 @@
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -52,6 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const isLoggedIn = false;
 
 
 function NavBar() {
@@ -73,17 +77,30 @@ function NavBar() {
                     />
                 </Search>
                 <Box sx={{ display: { xs: 'none', md: 'flex'} }}>
-                <IconButton
-                  size="large"
-                  edge="end"
-                  aria-label="account of current user"
-                    //aria-controls={menuId}
-                  aria-haspopup="true"
-                    //onClick={handleProfileMenuOpen}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
+                { isLoggedIn ?
+                    <IconButton
+                      size="large"
+                      edge="end"
+                      aria-label="account of current user"
+                        //aria-controls={menuId}
+                      aria-haspopup="true"
+                        //onClick={handleProfileMenuOpen}
+                      color="inherit"
+                    >
+                      <AccountCircle />
+                    </IconButton>
+                    :
+
+                    <ButtonGroup
+                      disableElevation
+                      variant="contained"
+                      aria-label="Disabled elevation buttons"
+                    >
+                      <Link to={'/signup'}><Button>SignUp</Button></Link>
+                      <Link to={'/login'}><Button>Login</Button></Link>
+                    </ButtonGroup>
+
+                }
                 </Box>
             </Toolbar>
         </AppBar>
