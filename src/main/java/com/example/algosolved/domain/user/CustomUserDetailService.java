@@ -11,10 +11,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService implements UserDetailsService {
+public class CustomUserDetailService implements UserDetailsService {
     private UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    public CustomUserDetailService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
