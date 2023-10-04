@@ -26,7 +26,7 @@ function Banner() {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" component="div">
+                <Typography gutterBottom variant="h5" component="div">
                     광고 협찬 중!
                 </Typography>
              </Grid>
