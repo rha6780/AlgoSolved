@@ -64,6 +64,18 @@ const isLoggedIn = false;
 
 
 function NavBar() {
+//  const [isLoggedIn, setIsLoggedIn] = useState(false);
+//
+//  useEffect(() => {
+//    const fetchData = async() => {
+//      const res = await fetch('https://localhost:8080/api/v1/auth/current');
+//      const result = res.json();
+//      return result;
+//    }
+//
+//    fetchData().then(res => setData(res));
+//  }, []);
+
   return (
     <Container>
         <AppBar position="static">

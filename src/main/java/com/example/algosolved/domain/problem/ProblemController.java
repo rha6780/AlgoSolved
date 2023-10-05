@@ -19,8 +19,9 @@ import java.util.Optional;
 @RequestMapping("api/v1/problem")
 public class ProblemController {
 
-    @Autowired
-    public ProblemService problemService;
+    private final  ProblemService problemService;
+//    @Autowired
+//    public ProblemService problemService;
 
     @Autowired
     public ProblemController(ProblemService problemService) {
