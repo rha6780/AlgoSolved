@@ -127,6 +127,12 @@ function LoginForm() {
                 label="Re-Password"
                 sx={{ margin: 2}}
              />
+             <TextField
+                required
+                id="outlined-required"
+                label="Name"
+                sx={{ margin: 2}}
+             />
           <Button>OK!</Button>
           </ Paper>
           </CustomTabPanel>

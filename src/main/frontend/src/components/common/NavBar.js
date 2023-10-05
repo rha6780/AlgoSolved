@@ -55,6 +55,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const Logo = styled(Link)(({theme}) => ({
+    color: 'white',
+    textDecoration: 'none'
+}));
+
 const isLoggedIn = false;
 
 
@@ -63,11 +68,11 @@ function NavBar() {
     <Container>
         <AppBar position="static">
             <Toolbar>
-            <Link to={'/'} styled="none">
-                <Typography variant="h5" styled="none">
-                    Algo Solved
-                </Typography>
-                </Link>
+                <Logo to={'/'} >
+                    <Typography variant="h5" styled={{ color: "white"}}>
+                        Algo Solved
+                    </Typography>
+                </Logo>
                 <Box sx={{ flexGrow: 1 }} />
                 <Search>
                     <SearchIconWrapper>
