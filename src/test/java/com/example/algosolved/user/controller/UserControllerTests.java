@@ -3,6 +3,7 @@ package com.example.algosolved.user;
 import com.example.algosolved.domain.user.User;
 import com.example.algosolved.domain.user.UserController;
 import com.example.algosolved.domain.user.UserRepository;
+import com.example.algosolved.domain.user.UserService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,13 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -31,7 +31,7 @@ public class UserControllerTests {
     private UserController userController;
 
     @Mock
-    private UserDetailsService userDetailsService;
+    private UserService userService;
 
     @Autowired
     private UserRepository userRepository;
@@ -47,7 +47,6 @@ public class UserControllerTests {
 
     @AfterEach
     public void clean() {
-        // 모든 테스트 이후에는 데이터 삭제
         userRepository.deleteAll();
     }
 
@@ -62,10 +61,9 @@ public class UserControllerTests {
                         .email("test@email.com")
                         .build()
         );
-        System.out.println("save end!");
 
         final ResultActions actions = mockMvc.perform(
-                get("/api/v1/problem?number=1")
+                post("/api/v1/auth/login")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
@@ -74,5 +72,36 @@ public class UserControllerTests {
 
         actions.andExpect(status().isOk());
     }
+
+    @Test
+    @DisplayName("로그인 실패 - 이메일 찾지 못함")
+    void loginFailNotExistEmail() {
+
+    }
+
+    @Test
+    @DisplayName("로그인 실패 - 비밀번호 틀림")
+    void loginFailInvalidPassword() {
+
+    }
+
+    @Test
+    @DisplayName("회원가입 성공")
+    void signUpSuccess() {
+
+    }
+
+    @Test
+    @DisplayName("회원가입 실패 - 이미 있는 이메일")
+    void signUpFailExistsEmail() {
+
+    }
+
+    @Test
+    @DisplayName("회원가입 실패 - 유효하지 않는 비밀번호")
+    void signUpFailInvalidPassword() {
+
+    }
+
 }
 
