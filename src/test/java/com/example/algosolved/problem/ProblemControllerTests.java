@@ -53,7 +53,6 @@ public class ProblemControllerTests {
 
     @AfterEach
     public void clean() {
-        // 모든 테스트 이후에는 데이터 삭제
         solveRepository.deleteAll();
     }
 
