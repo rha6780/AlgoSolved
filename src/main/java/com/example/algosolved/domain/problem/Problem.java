@@ -38,30 +38,6 @@ public class Problem {
         this.content = content;
         this.number = number;
     }
-//
-//    public long getId() {
-//        return id;
-//    }
-//
-//    public long getNumber() {return number;}
-//
-//    public void setNumber(long number) { this.number = number; }
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-//
-//    public String getContent() {
-//        return content;
-//    }
-//
-//    public void setContent(String content) {
-//        this.content = content;
-//    }
 
     public Collection<Solve> getSoleves() {
         return solves;

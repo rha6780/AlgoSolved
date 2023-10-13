@@ -94,7 +94,7 @@ function LoginForm() {
                    label="Password"
                    sx={{ margin: 2}}
                  />
-                 <Button onClick={}>OK!</Button>
+                 <Button >OK!</Button>
              </ Paper>
            </CustomTabPanel>
            <CustomTabPanel value={value} index={1}>

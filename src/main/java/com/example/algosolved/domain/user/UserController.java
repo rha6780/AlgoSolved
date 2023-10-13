@@ -2,14 +2,11 @@ package com.example.algosolved.domain.user;
 
 import com.example.algosolved.domain.role.RoleRepository;
 import com.example.algosolved.domain.user.dto.LoginDto;
+import com.example.algosolved.domain.user.dto.LoginResponseDto;
 import com.example.algosolved.domain.user.dto.SignUpDto;
+import com.example.algosolved.domain.user.dto.SignUpResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,54 +16,50 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/v1/auth")
 public class UserController {
-    @Autowired
-    private AuthenticationManager authenticationManager;
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private RoleRepository roleRepository;
 
-    @Autowired
     private UserService userService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> authenticateUser(@RequestBody LoginDto loginDto) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword()));
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("User Login", HttpStatus.OK);
+    public ResponseEntity<LoginResponseDto> authenticateUser(@RequestBody LoginDto loginDto) {
+        LoginResponseDto loginResponseDto = userService.login(loginDto);
+        System.out.println("loginDTO : "+loginResponseDto);
+        if (loginResponseDto == null) {
+            return ResponseEntity.badRequest().body(loginResponseDto);
+        }
+        if (loginResponseDto.getIsValid().booleanValue() == true) {
+            return ResponseEntity.ok(loginResponseDto);
+        } else {
+            return ResponseEntity.badRequest().body(loginResponseDto);
+        }
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@RequestBody SignUpDto signUpDto) {
+    public ResponseEntity<SignUpResponseDto> registerUser(@RequestBody SignUpDto signUpDto) {
         if(userRepository.existsByEmail(signUpDto.getEmail())) {
-            return new ResponseEntity<>("Email is already exist!", HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body(new SignUpResponseDto(false, "email"));
         }
 
-        User user = new User();
-        user.setEmail(signUpDto.getEmail());
-        user.setName(signUpDto.getEmail());
+        User user = new User(signUpDto.getName(), signUpDto.getEmail(), signUpDto.getPassword());
 
-        user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
-//        user.setRoles(roleRepository.findByName("user"));
+        userService.signUpUser(user);
 
-        userRepository.save(user);
-
-        return new ResponseEntity<>("User is registered!", HttpStatus.OK);
+        return ResponseEntity.ok(new SignUpResponseDto(true, "none"));
     }
 
-//    @GetMapping("/current")
-//    public ResponseEntity<RestResponse> current() {
-//        return
-//    }
 }

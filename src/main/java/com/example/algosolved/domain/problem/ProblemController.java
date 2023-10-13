@@ -20,8 +20,6 @@ import java.util.Optional;
 public class ProblemController {
 
     private final  ProblemService problemService;
-//    @Autowired
-//    public ProblemService problemService;
 
     @Autowired
     public ProblemController(ProblemService problemService) {
