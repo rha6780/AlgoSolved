@@ -1,12 +1,10 @@
-import { ApiClient } from '/api/v1/common/apiClient';
-import { UserState, SignInPayload } from '../../../models/User';
+import { ApiClient } from 'api/v1/common/apiClient';
+//import { UserState, SignUpPayload } from '../../../models/User';
 
 
-export const signIn = async (signInPayload: SignInPayload) => {
+export const signUp = async (signUpPayload) => {
     try {
-        const { data } = await ApiClient.post<UserState>(`api/v1/auth/signup`, signInPayload);
-        setAccessToken(data.token['access']);
-        setCookie('refresh_token', data.token['refresh'], { secure: true }); //httpOnly: true,
+        const { data } = await ApiClient.post(`api/v1/auth/signIn`, signUpPayload);
         return data;
     } catch (error) {
         return error;
