@@ -99,13 +99,21 @@ function LoginForm() {
     setName(event.target.value);
   };
 
+  const clearData = (event: React.ChangeEvent<HTMLButtonElement>) => {
+    setEmail("");
+    setPassword("");
+    setRePassword("");
+    setName("");
+  };
+
+  //TODO: 응답에 따라 에러 메세지 또는 화면 전환
   const submitSignIn = () => {
     signIn( {email, password} )
   }
 
   const submitSignUp = () => {
     signUp( {email, password, name} )
-  }
+  };
 
 
   return (
@@ -119,8 +127,8 @@ function LoginForm() {
 
            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
              <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-               <Tab label="Login" {...a11yProps(0)} />
-               <Tab label="SignUp" {...a11yProps(1)} />
+               <Tab label="Login" {...a11yProps(0)} onClick={clearData}/>
+               <Tab label="SignUp" {...a11yProps(1)} onClick={clearData}/>
              </Tabs>
            </Box>
            <CustomTabPanel value={value} index={0}>
@@ -140,13 +148,30 @@ function LoginForm() {
                    id="outlined-required"
                    label="Email"
                    sx={{ margin: 2}}
+                   onChange ={handleEmail}
                  />
-                 <TextField
-                   required
-                   id="outlined-password-input"
-                   label="Password"
-                   sx={{ margin: 2}}
-                 />
+                 <FormControl sx={{ margin: 2 }} variant="outlined">
+                   <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
+                     <OutlinedInput
+                       id="outlined-adornment-password"
+                       type={showPassword ? 'text' : 'password'}
+                       endAdornment={
+                         <InputAdornment position="end">
+                           <IconButton
+                             aria-label="toggle password visibility"
+                             onClick={handleClickShowPassword}
+                             onMouseDown={handleMouseDownPassword}
+                             edge="end"
+                           >
+                             {showPassword ? <VisibilityOff /> : <Visibility />}
+                           </IconButton>
+                         </InputAdornment>
+                       }
+                       required
+                       label="password"
+                       onChange={handlePassword}
+                     />
+                 </FormControl>
                  <Button onClick={submitSignIn} >OK!</Button>
              </ Paper>
            </CustomTabPanel>
@@ -170,7 +195,7 @@ function LoginForm() {
                 onChange ={handleEmail}
              />
              <FormControl sx={{ margin: 2 }} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+              <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
                 <OutlinedInput
                   id="outlined-adornment-password"
                   type={showPassword ? 'text' : 'password'}
@@ -186,12 +211,13 @@ function LoginForm() {
                       </IconButton>
                     </InputAdornment>
                   }
+                  required
                   label="password"
                   onChange={handlePassword}
                 />
              </FormControl>
              <FormControl sx={{ margin: 2 }} variant="outlined">
-             <InputLabel htmlFor="outlined-adornment-password">Re-Password</InputLabel>
+             <InputLabel htmlFor="outlined-adornment-password">Re-Password *</InputLabel>
                <OutlinedInput
                  id="outlined-adornment-password"
                  type={showRePassword ? 'text' : 'password'}
@@ -207,6 +233,7 @@ function LoginForm() {
                      </IconButton>
                    </InputAdornment>
                  }
+                 required
                  label="re-password"
                  onChange={handleRePassword}
                />

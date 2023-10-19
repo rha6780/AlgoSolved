@@ -35,6 +35,19 @@ services:
     networks:
       algosolved_networks:
 
+  web:
+    build:
+      context: src/main/frontend
+      dockerfile: Dockerfile
+    working_dir: /usr/src/frontend
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - db
+    networks:
+      algosolved_networks:
+
 
 networks:
   algosolved_networks:
