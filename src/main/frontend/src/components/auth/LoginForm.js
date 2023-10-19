@@ -22,7 +22,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 
-import {signUp} from 'api/v1/auth/signUp';
+import { signUp } from 'api/v1/auth/signUp';
+import { signIn } from 'api/v1/auth/signIn';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -98,6 +99,15 @@ function LoginForm() {
     setName(event.target.value);
   };
 
+  const submitSignIn = () => {
+    signIn( {email, password} )
+  }
+
+  const submitSignUp = () => {
+    signUp( {email, password, name} )
+  }
+
+
   return (
   <Container>
     <Grid sx={{
@@ -137,7 +147,7 @@ function LoginForm() {
                    label="Password"
                    sx={{ margin: 2}}
                  />
-                 <Button >OK!</Button>
+                 <Button onClick={submitSignIn} >OK!</Button>
              </ Paper>
            </CustomTabPanel>
            <CustomTabPanel value={value} index={1}>
@@ -208,7 +218,7 @@ function LoginForm() {
                 sx={{ margin: 2}}
                 onChange={handleName}
              />
-          <Button onClick={signUp()}>OK!</Button>
+          <Button onClick={submitSignUp}>OK!</Button>
           </ Paper>
           </CustomTabPanel>
     </ Grid>
