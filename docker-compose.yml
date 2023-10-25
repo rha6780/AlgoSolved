@@ -23,10 +23,10 @@ services:
       - .:/usr/src/app
     working_dir: /usr/src/app
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/algosolve
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-#      SPRING_PROFILES_ACTIVE: dev
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/algosolve
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_PROFILES_ACTIVE=dev
     ports:
       - "8080:8080"
     restart: always
