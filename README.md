@@ -15,14 +15,23 @@
 ```
 git clone https://github.com/rha6780/AlgoSolved.git
 cd AlgoSolved
+./gradlew clean build --exclude-task test
 docker compose up -d
 ```
 개발환경인 application-dev.properties는 필요에 따라 값을 변경해도 됩니다.
 
-프론트 -> [localhost:3000](http://localhost:3000)
+프론트 [localhost:3000](http://localhost:3000)
 
-백엔드 -> [localhost:8080](http://localhost:8080)
+백엔드 [localhost:8080](http://localhost:8080)
 
+<br>
+
+**Docker**
+
+수정한 코드를 Docker에 적용하려면 `./gradlew clean build --exclude-task test` 또는 아래와 같이 bootJar를 실행시켜야됩니다.
+<img width="372" alt="JAR build" src="https://github.com/rha6780/AlgoSolved/assets/47859845/e427cd0e-a79b-4c8c-b16c-a1cbad70d9b7">
+
+이후 Docker 컨테이너를 재시작합니다.
 
 ## 아키텍쳐
 
