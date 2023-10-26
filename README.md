@@ -12,6 +12,7 @@
 
 **Installation**
 
+application-dev.properties.example 을 application-dev.properties로 변경
 ```
 git clone https://github.com/rha6780/AlgoSolved.git
 cd AlgoSolved
