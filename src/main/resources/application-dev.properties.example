@@ -1,5 +1,5 @@
 logging.level.root=DEBUG
-server.port=8080
+server.port=${SPRING_SERVER_PORT}
 
 # DB
 spring.datasource.driver-class-name=org.postgresql.Driver
